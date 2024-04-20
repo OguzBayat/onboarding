@@ -1,0 +1,21 @@
+# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  title: MyString
+  description: MyText
+  video_info: MyString
+  completed_at: 2024-04-20 23:57:31
+  step_order: 1
+  locked: false
+  step_input: 1
+  company: one
+
+two:
+  title: MyString
+  description: MyText
+  video_info: MyString
+  completed_at: 2024-04-20 23:57:31
+  step_order: 1
+  locked: false
+  step_input: 1
+  company: two

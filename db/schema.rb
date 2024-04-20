@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2024_04_20_201356) do
+ActiveRecord::Schema[7.0].define(version: 2024_04_20_205731) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -23,6 +23,20 @@ ActiveRecord::Schema[7.0].define(version: 2024_04_20_201356) do
     t.index ["user_id"], name: "index_companies_on_user_id"
   end
 
+  create_table "onboarding_steps", force: :cascade do |t|
+    t.string "title"
+    t.text "description"
+    t.string "video_info"
+    t.datetime "completed_at"
+    t.integer "step_order"
+    t.boolean "locked"
+    t.integer "step_input"
+    t.bigint "company_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["company_id"], name: "index_onboarding_steps_on_company_id"
+  end
+
   create_table "users", force: :cascade do |t|
     t.string "email"
     t.string "name"
@@ -33,4 +47,5 @@ ActiveRecord::Schema[7.0].define(version: 2024_04_20_201356) do
   end
 
   add_foreign_key "companies", "users"
+  add_foreign_key "onboarding_steps", "companies"
 end
