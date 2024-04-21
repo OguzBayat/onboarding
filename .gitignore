@@ -27,3 +27,19 @@
 
 # Ignore master key for decrypting credentials and more.
 /config/master.key
+
+tmp
+pkg
+doc
+.yardoc
+coverage
+
+.gdb_history
+.bundle/*
+!.bundle/config
+.byebugrc
+.byebug_history
+.envrc
+
+lib/byebug/byebug.so
+lib/byebug/byebug.bundle

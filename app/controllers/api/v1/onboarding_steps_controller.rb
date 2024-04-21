@@ -3,10 +3,8 @@ class Api::V1::OnboardingStepsController < ApplicationController
 
   # GET :company_id/onboarding_steps
   def index
-    @onboarding_steps = current_company.onboarding_steps.order(step_order: :asc)
-
     render json: {
-      data: ActiveModelSerializers::SerializableResource.new(@current_company, each_serializer: Api::V1::OnboardingStepsListSerializer),
+      data: ActiveModelSerializers::SerializableResource.new(current_company, each_serializer: Api::V1::OnboardingStepsListSerializer),
       message: ['Onboarding steps list fetched successfully'],
       status: 200,
       type: 'Success'
