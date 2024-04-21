@@ -5,14 +5,23 @@ class Api::V1::OnboardingStepsController < ApplicationController
   def index
     @onboarding_steps = current_company.onboarding_steps.order(step_order: :asc)
 
-    render json: @onboarding_steps
+    render json: {
+      data: ActiveModelSerializers::SerializableResource.new(@current_company, each_serializer: Api::V1::OnboardingStepsListSerializer),
+      message: ['Onboarding steps list fetched successfully'],
+      status: 200,
+      type: 'Success'
+    }
   rescue ActiveRecord::RecordNotFound => error
     render json: { error: error.message }, status: :not_found
   end
 
   # GET :company_id/onboarding_steps/:id
   def show
-    render json: @onboarding_step
+    render json: {
+      data: ActiveModelSerializers::SerializableResource.new(@onboarding_step, serializer: Api::V1::OnboardingStepSerializer),
+      status: 200,
+      type: 'Success'
+    }
   end
 
   # PUT :company_id/onboarding_steps/:id
@@ -32,6 +41,8 @@ class Api::V1::OnboardingStepsController < ApplicationController
     # Use callbacks to share common setup or constraints between actions.
     def set_onboarding_step
       @onboarding_step = current_company.onboarding_steps.find(params[:id])
+    rescue ActiveRecord::RecordNotFound => error
+      render json: { error: error.message }, status: :not_found
     end
 
     # Only allow a list of trusted parameters through.
