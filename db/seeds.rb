@@ -18,7 +18,6 @@ step_titles = [
 
 user = User.create(email: 'oguzbayat77@gmail.com', name: 'Oguz', surname: 'Bayat')
 company = Company.create(title: 'test comp',
-                         onboarding_completed: false,
                          user_id: user.id,
                          status: 'not_start',
                          step_count: step_titles.count,

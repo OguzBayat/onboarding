@@ -10,13 +10,12 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2024_04_21_211950) do
+ActiveRecord::Schema[7.0].define(version: 2024_04_22_203631) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
   create_table "companies", force: :cascade do |t|
     t.string "title"
-    t.boolean "onboarding_completed"
     t.bigint "user_id", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
@@ -37,6 +36,7 @@ ActiveRecord::Schema[7.0].define(version: 2024_04_21_211950) do
     t.bigint "company_id", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.boolean "completed", default: false
     t.index ["company_id"], name: "index_onboarding_steps_on_company_id"
   end
 

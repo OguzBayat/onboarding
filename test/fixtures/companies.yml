@@ -2,10 +2,8 @@
 
 one:
   title: MyString
-  onboarding_completed: false
   user: one
 
 two:
   title: MyString
-  onboarding_completed: false
   user: two
