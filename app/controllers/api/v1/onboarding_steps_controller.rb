@@ -3,23 +3,14 @@ class Api::V1::OnboardingStepsController < ApplicationController
 
   # GET :company_id/onboarding_steps
   def index
-    render json: {
-      data: ActiveModelSerializers::SerializableResource.new(current_company, each_serializer: Api::V1::OnboardingStepsListSerializer),
-      message: ['Onboarding steps list fetched successfully'],
-      status: 200,
-      type: 'Success'
-    }
+    render json: ActiveModelSerializers::SerializableResource.new(current_company, each_serializer: Api::V1::OnboardingStepsListSerializer)
   rescue ActiveRecord::RecordNotFound => error
     render json: { error: error.message }, status: :not_found
   end
 
   # GET :company_id/onboarding_steps/:id
   def show
-    render json: {
-      data: ActiveModelSerializers::SerializableResource.new(@onboarding_step, serializer: Api::V1::OnboardingStepSerializer),
-      status: 200,
-      type: 'Success'
-    }
+    render json: @onboarding_step
   end
 
   # PUT :company_id/onboarding_steps/:id
