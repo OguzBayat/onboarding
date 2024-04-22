@@ -64,4 +64,5 @@ Rails.application.configure do
   # config.action_cable.disable_request_forgery_protection = true
 
   ActiveModelSerializers.config.adapter = :json_api
+  ActiveModelSerializers.config.key_transform = :underscore
 end

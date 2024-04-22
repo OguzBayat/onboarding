@@ -7,6 +7,7 @@ class ProgressInfoService
   def self.call(company)
     all_infos = warehouse_progress_infos + product_progress_infos + vendor_progress_infos + sales_history_progress_infos
     {
+      company_id: company.id,
       total_progress_ratio: calculate_progress_ratio(all_infos),
       warehouse_progress_ratio: calculate_progress_ratio(warehouse_progress_infos),
       product_progress_ratio: calculate_progress_ratio(product_progress_infos),
