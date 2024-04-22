@@ -32,6 +32,6 @@ class Api::V1::OnboardingStepsController < Api::V1::BaseApiController
 
     # Only allow a list of trusted parameters through.
     def onboarding_step_params
-      params.require(:onboarding_step).permit(:locked, :step_input)
+      params.require(:onboarding_step).permit(:step_input, :completed).with_defaults(completed: true)
     end
 end
