@@ -1,4 +1,4 @@
-class Api::V1::OnboardingStepsController < ApplicationController
+class Api::V1::OnboardingStepsController < Api::V1::BaseApiController
   before_action :set_onboarding_step, only: %i[show update]
 
   # GET :company_id/onboarding_steps
@@ -23,10 +23,6 @@ class Api::V1::OnboardingStepsController < ApplicationController
   end
 
   private
-    def current_company
-      @current_company = Company.find(params[:company_id])
-    end
-
     # Use callbacks to share common setup or constraints between actions.
     def set_onboarding_step
       @onboarding_step = current_company.onboarding_steps.find(params[:id])

@@ -1,4 +1,4 @@
-class Api::V1::SyncProgressInfosController < ApplicationController
+class Api::V1::SyncProgressInfosController < Api::V1::BaseApiController
 
   def index
     service_result = ProgressInfoService.call(current_company)
@@ -9,9 +9,4 @@ class Api::V1::SyncProgressInfosController < ApplicationController
       render json: { errors: service_result.errors.messages }, status: :unprocessable_entity
     end
   end
-
-  private
-    def current_company
-      @current_company = Company.find(params[:company_id])
-    end
 end

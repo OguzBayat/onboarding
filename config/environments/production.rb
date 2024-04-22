@@ -85,4 +85,5 @@ Rails.application.configure do
   config.active_record.dump_schema_after_migration = false
 
   ActiveModelSerializers.config.adapter = :json_api
+  ActiveModelSerializers.config.key_transform = :underscore
 end
