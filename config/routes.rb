@@ -2,15 +2,14 @@ Rails.application.routes.draw do
   # API routes hould be in /api/v1
   namespace :api do
     namespace :v1 do
-      get ':company_id/sync_progress_infos', to: 'sync_progress_infos#index'
+      scope ':company_id' do
+        get 'iam', to: 'base_api#me'
 
-      get ':company_id/onboarding_steps', to: 'onboarding_steps#index'
-      get ':company_id/onboarding_steps/:id', to: 'onboarding_steps#show'
-      put ':company_id/onboarding_steps/:id', to: 'onboarding_steps#update'
+        get 'sync_progress_infos', to: 'sync_progress_infos#index'\
+
+        resources :onboarding_steps, only: [:index, :show, :update]
+      end
+
     end
   end
-  # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
-
-  # Defines the root path route ("/")
-  # root "articles#index"
 end
