@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2024_04_23_160709) do
+ActiveRecord::Schema[7.0].define(version: 2024_04_23_201647) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -39,6 +39,7 @@ ActiveRecord::Schema[7.0].define(version: 2024_04_23_160709) do
     t.datetime "updated_at", null: false
     t.boolean "completed", default: false
     t.string "related_ratio"
+    t.boolean "skipped", default: false
     t.index ["company_id"], name: "index_onboarding_steps_on_company_id"
   end
 

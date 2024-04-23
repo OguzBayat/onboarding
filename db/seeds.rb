@@ -46,7 +46,7 @@ step_titles.each_with_index do |title, index|
     description: Faker::Lorem.paragraph(sentence_count: 5),
     video_info: Faker::Lorem.sentence(word_count: 3),
     step_order: index + 1,
-    locked: index > 3
+    locked: false
   )
 end
 existing_po_steps = OnboardingStep.where(step_order: 5)

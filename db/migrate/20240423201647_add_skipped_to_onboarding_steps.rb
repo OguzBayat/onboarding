@@ -1,0 +1,5 @@
+class AddSkippedToOnboardingSteps < ActiveRecord::Migration[7.0]
+  def change
+    add_column :onboarding_steps, :skipped, :boolean, default: false
+  end
+end
