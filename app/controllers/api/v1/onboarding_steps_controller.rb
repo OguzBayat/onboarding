@@ -18,7 +18,7 @@ class Api::V1::OnboardingStepsController < Api::V1::BaseApiController
     if @onboarding_step.update(onboarding_step_params)
       render json: @onboarding_step
     else
-      render json: @onboarding_step.errors, status: :unprocessable_entity
+      render json: { error: @onboarding_step.errors.to_hash }, status: :unprocessable_entity
     end
   end
 
