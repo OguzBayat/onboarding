@@ -7,6 +7,10 @@ class OnboardingStep < ApplicationRecord
   before_update :set_completed_at, :increase_completed_step_count, :if => :completed_changed?
   after_update :update_onboarding_status
 
+  def related_ratio_to_be_unlocked
+    self.related_ratio.to_sym
+  end
+
   private
 
     def set_completed_at
