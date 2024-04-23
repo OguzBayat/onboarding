@@ -23,4 +23,5 @@ set :output, {:error => "log/cron_error_log.log", :standard => "log/cron_log.log
 
 every 1.minute do
   rake 'check_progress:unlock_steps'
+  rake 'check_progress:send_sync_completed_mail'
 end
