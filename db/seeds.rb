@@ -54,3 +54,9 @@ existing_po_steps.update_all(related_ratio: 'product_progress_ratio')
 
 suplier_and_product_steps = OnboardingStep.where(step_order: 6)
 suplier_and_product_steps.update_all(related_ratio: 'warehouse_progress_ratio')
+
+lead_time_steps = OnboardingStep.where(step_order: 2)
+lead_time_steps.update_all(related_class_name: 'lead_time_updater', related_class_type: 'service')
+
+forcasting_steps = OnboardingStep.where(step_order: 4)
+forcasting_steps.update_all(related_class_name: 'refresh_calculations_worker', related_class_type: 'worker')
