@@ -65,4 +65,5 @@ Rails.application.configure do
 
   ActiveModelSerializers.config.adapter = :json_api
   ActiveModelSerializers.config.key_transform = :underscore
+  config.active_job.queue_adapter = :sidekiq
 end
