@@ -1,24 +1,59 @@
 # README
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+## Install
 
-Things you may want to cover:
+### Clone the repository
 
-* Ruby version
+```shell
+git clone git@github.com:OguzBayat/onboarding.git
+cd onboarding
+```
 
-* System dependencies
+### Check your Ruby version
 
-* Configuration
+```shell
+ruby -v
+```
 
-* Database creation
+The ouput should start with something like `ruby 3.1.4`
 
-* Database initialization
+If not, install the right ruby version using [rbenv](https://github.com/rbenv/rbenv) (it could take a while):
 
-* How to run the test suite
+```shell
+rbenv install 3.1.4
+```
 
-* Services (job queues, cache servers, search engines, etc.)
+### Install dependencies
 
-* Deployment instructions
+Using [Bundler](https://github.com/bundler/bundler):
 
-* ...
+```shell
+bundle install
+```
+
+
+### Initialize the database
+
+```shell
+rails db:create db:migrate db:seed
+```
+
+### Run background jobs
+
+For unlock steps:
+
+```shell
+rake 'check_progress:unlock_steps'
+```
+
+For sync progress completed email:
+
+```shell
+rake 'check_progress:send_sync_completed_mail'
+```
+
+## Serve
+
+```shell
+rails s
+```
