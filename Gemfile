@@ -52,3 +52,4 @@ end
 gem "active_model_serializers"
 gem 'sidekiq'
 gem 'whenever', require: false
+gem "letter_opener", :group => :development

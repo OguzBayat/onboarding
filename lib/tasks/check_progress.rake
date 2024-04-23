@@ -8,4 +8,11 @@ namespace :check_progress do
     end
   end
 
+  task send_sync_completed_mail: :environment do
+    companies = Company.where(sync_completed_mail_sent_at: nil)
+
+    companies.each do |company|
+      SendSyncCompletedEmailJob.perform_async(company.id)
+    end
+  end
 end

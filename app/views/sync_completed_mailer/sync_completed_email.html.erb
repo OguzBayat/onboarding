@@ -1,0 +1,10 @@
+<h1>Hi, <%= @user.fullname %>. Your Shopify data was successfully synced </h1>
+<p>
+    <ul>
+        <li>Fetched Warehouse Count: <%= @progress_info[:fetched_warehouse_count] %></li>
+        <li>Fetched Product Count: <%= @progress_info[:fetched_product_count] %></li>
+        <li>Fetched Vendor Count: <%= @progress_info[:fetched_vendors_count] %></li>
+        <li>Fetched Sales History Count: <%= @progress_info[:fetched_sales_history_count] %></li>
+    </ul>
+</p>
+<p>Thanks and have a great day!</p>
