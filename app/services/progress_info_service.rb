@@ -23,7 +23,7 @@ class ProgressInfoService
   # Assume that these all fetcher return array
   def self.warehouse_progress_infos(company)
     # WarehouseFetcher.new(company).progress
-    [{ company_id: company.id, number_of_total_process: 2, fetched_count: 2 }]
+    [{ company_id: company.id, number_of_total_process: 10, fetched_count: 2 }]
   end
 
   def self.product_progress_infos(company)

@@ -64,7 +64,7 @@ Rails.application.configure do
   # Uncomment if you wish to allow Action Cable access from any origin.
   # config.action_cable.disable_request_forgery_protection = true
 
-  #ActiveModelSerializers.config.adapter = :json_api
+  # ActiveModelSerializers.config.adapter = :json_api
   ActiveModelSerializers.config.key_transform = :underscore
   config.active_job.queue_adapter = :sidekiq
 end

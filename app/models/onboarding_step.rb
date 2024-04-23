@@ -6,17 +6,21 @@ class OnboardingStep < ApplicationRecord
   validates :step_input, numericality: { only_integer: true }, allow_blank: true
 
   before_update :prevent_update_if_locked, :unless => :locked_changed?
+  before_update :prevent_update_if_previous_step_does_not_completed, :unless => :skipped_changed?
   before_update :set_completed_at, :increase_completed_step_count, :if => :completed_changed?
   after_update :update_onboarding_status
 
-  def related_ratio_to_be_unlocked
-    self.related_ratio.to_sym
-  end
-
   private
 
+    def prevent_update_if_previous_step_does_not_completed
+      if (step_order - company.completed_step_count) > 1
+        errors.add(:base, "Cannot update because the previous steps did not complete.")
+        throw(:abort)
+      end
+    end
+
     def prevent_update_if_locked
-      if self.locked?
+      if locked?
         errors.add(:base, "Cannot update because the step is locked.")
         throw(:abort)
       end
@@ -27,16 +31,16 @@ class OnboardingStep < ApplicationRecord
     end
 
     def increase_completed_step_count
-      self.company.update(completed_step_count: (self.company.completed_step_count + 1))
+      company.update(completed_step_count: (company.completed_step_count + 1))
     end
 
     def update_onboarding_status
-      status = if self.company.step_count == self.company.completed_step_count
+      status = if company.step_count == company.completed_step_count
                 'completed'
                else
                 'in_progress'
                end
 
-      self.company.update!(status: status)
+      company.update!(status: status)
     end
 end
