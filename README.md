@@ -49,6 +49,10 @@ bundle exec sidekiq
 For unlock steps:
 
 ```shell
+whenever --update-crontab --set environment='development'
+```
+
+```shell
 rake 'check_progress:unlock_steps'
 ```
 
