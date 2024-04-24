@@ -40,6 +40,12 @@ rails db:create db:migrate db:seed
 
 ### Run background jobs
 
+Run sidekiq at the other terminal
+
+```shell
+bundle exec sidekiq
+```
+
 For unlock steps:
 
 ```shell
